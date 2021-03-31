@@ -6,7 +6,7 @@ with open("README.md") as fp:
 
 
 setuptools.setup(
-    name="bootcamp_data_platform_turma_3",
+    name="data_platform",
     version="0.0.1",
 
     description="An empty CDK Python app",
@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "bootcamp_data_platform_turma_3"},
-    packages=setuptools.find_packages(where="bootcamp_data_platform_turma_3"),
+    package_dir={"": "data_platform"},
+    packages=setuptools.find_packages(where="data_platform"),
 
     install_requires=[
         "aws-cdk.core==1.85.0",
@@ -25,13 +25,12 @@ setuptools.setup(
     python_requires=">=3.6",
 
     classifiers=[
-        "Development Status :: 4 - Beta",
 
         "Intended Audience :: Developers",
 
         "License :: OSI Approved :: Apache Software License",
 
-        "Programming Language :: JavaScript",
+
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

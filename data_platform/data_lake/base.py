@@ -46,6 +46,9 @@ class BaseDataLakeBucket(s3.Bucket):
             )
 
     def set_default_lifecycle_rules(self):
+        """
+        Sets lifecycle rule by default
+        """
         self.add_lifecycle_rule(
             abort_incomplete_multipart_upload_after=core.Duration.days(7),
             enabled=True

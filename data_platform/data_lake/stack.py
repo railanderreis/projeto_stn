@@ -21,6 +21,20 @@ class DataLakeStack(core.Stack):
             layer=DataLakeLayer.RAW
         )
 
+        self.data_lake_raw_bucket.add_lifecycle_rule(
+            transitions=[
+                s3.Transition(
+                    storage_class=s3.StorageClass.INTELLIGENT_TIERING,
+                    transition_after=core.Duration.days(90)
+                ),
+                s3.Transition(
+                    storage_class=s3.StorageClass.GLACIER,
+                    transition_after=core.Duration.days(360)
+                )
+            ],
+            enabled=True
+        )
+
         # Data Lake Processed
         self.data_lake_processed_bucket = BaseDataLakeBucket(
             self,
