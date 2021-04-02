@@ -1,4 +1,0 @@
-bucket: s3-stn-production-data-lake-raw
-series:
-  - 21388
-  - 21395

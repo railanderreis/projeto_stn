@@ -24,6 +24,7 @@ class BaseDataLakeBucket(s3.Bucket):
             scope,
             id=self.obj_name,
             bucket_name=self.obj_name,
+            removal_policy=core.RemovalPolicy.DESTROY,
             block_public_access=self.default_block_public_access,
             encryption=self.default_encryption,
             versioned=True,
