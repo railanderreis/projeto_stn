@@ -1,0 +1,25 @@
+import pandas as pd
+import boto3
+import yaml
+
+s3 = boto3.client('s3')
+
+
+def upload():
+    cods = [21388, 21395]
+    for i in cods:
+        url = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.{}/dados?formato=json'.format(i)
+        df = pd.read_json(url)
+        nome = str(i)
+        data = df.to_csv(nome + ".csv", index=False, header=True)
+
+        key = f'series/{data}'
+
+        s3.put_object(Body=data, Bucket='s3-stn-production-data-lake-raw', Key=key)
+
+
+if __name__ == "__main__":
+    with open('deploy_production.yml') as f:
+        deploy_production = yaml.safe_load(f)
+
+    upload()

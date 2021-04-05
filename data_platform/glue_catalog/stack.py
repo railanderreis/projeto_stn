@@ -29,7 +29,7 @@ class GlueCatalogStack(core.Stack):
             self,
             glue_database=self.database,
             glue_role=self.role,
-            table_name="atomic_events",
+            table_name="inputs",
             schedule_expression="cron(0/15 * * * ? *)",
         )
 
